@@ -22,7 +22,6 @@ var userSchema = new Schema({
 //  this.name = this.name + '-dude'; 
 //  return this.name;
 //};
-
 // we need to create a model using it
 var User = mongoose.model('User', userSchema);
 
