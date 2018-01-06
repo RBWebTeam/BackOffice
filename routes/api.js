@@ -10,16 +10,6 @@ router.get('/', function(req, res, next) {
   res.send('Calling Api........');
 });
 router.use(session({secret: "chaos is a ladder."}));
-
-//router.get('/auth', function(req, res){
-//   if(req.session.page_views){
-//      req.session.page_views++;
-//      res.send("You visited this page " + req.session.page_views + " times");
-//   } else {
-//      req.session.page_views = 1;
-//      res.send("Welcome to this page for the first time!");
-//   }
-//});
 //route to authenticate user
 router.post('/authenticate', function(req, res, next) {
      check_auth_in_db(req.body.email,req.body.pwd,function (data){
@@ -48,19 +38,7 @@ router.post('/save-req', function(req, res, next) {
     err="Something went wrong";
     request=new Request_model(req.body);
     // create a new user called chris
-//var user_detail = new User({
-//  name: 'Chris',
-//  username: email,
-//  password: pwd 
-//});
-
-// call the custom method. this will just add -dude to his name
-// user will now be manish-dude
-//user_detail.dudify(function(err, name) {
-//  if (err) throw err;
-//
-//  console.log('Your new name is ' + name);
-//});
+ 
 
 // call the built-in save method to save to the database
 request.save(function(err) {
@@ -85,26 +63,26 @@ function isAuthenticated(req, res, next) {
   if (req.session.user && req.session.user.authenticated)
       return next();
 //  res.redirect('/');
-    res.send("Not auth");
+    res.send("Not authorized");
 }
-router.get('/set-sess', function(req, res, next) {
-    app.use(session({ resave: true ,secret: '123456' , saveUninitialized: true}));
-    req.session.user = {"authenticated":true};
-   
-    res.send("session is set");
-});
-router.get('/get-sess', function(req, res, next) {
-
-    res.send(req.session);
-});
-router.get('/del-sess', function(req, res, next) {
-    req.session.destroy();
-    res.send("session destroyed");
-});
-router.get('/auth',isAuthenticated ,function(req, res, next) {
-
-    res.send("authorize user");
-});
+//router.get('/set-sess', function(req, res, next) {
+//    app.use(session({ resave: true ,secret: '123456' , saveUninitialized: true}));
+//    req.session.user = {"authenticated":true};
+//   
+//    res.send("session is set");
+//});
+//router.get('/get-sess', function(req, res, next) {
+//
+//    res.send(req.session);
+//});
+//router.get('/del-sess', function(req, res, next) {
+//    req.session.destroy();
+//    res.send("session destroyed");
+//});
+//router.get('/auth',isAuthenticated ,function(req, res, next) {
+//
+//    res.send("authorize user");
+//});
 
 
 module.exports = router;
