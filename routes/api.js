@@ -45,7 +45,7 @@ request.save(function(err) {
   
   if (err) response=make_response(0,"","Something went wrong");;
 
-  response=make_response(1,"data saved successfully","");
+  response=make_response(1,"data saved successfully!","");
   res.send(response);
 });
 });
