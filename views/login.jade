@@ -1,0 +1,28 @@
+extends layout
+block content
+                
+               
+           .continer
+                 br
+                 br
+                 br
+                 .col-md-4
+                 .col-md-4
+                   .login
+                    .logo-bg  
+                       img.img-responsive.img-center(src="/images/logo.png" alt="Image Title")
+                     .login-bdy
+                       h2.text-center SIGN IN 
+                          form(id="login_form")
+                            .form-group
+                              input.form-control.input-cs(type='text',name="email",  placeholder='Enter username', required)
+
+                            .form-group
+                               input.form-control.input-cs(type='password',name="pwd",  placeholder='Enter Password', required)
+
+                            a(class='btn btn-primary', id='auth_button') Submit
+                            h2(id='welcome')
+                            a.forgot-pass.pull-right(href="#") Forgot Password !
+                            
+                      .col-md-4
+                      

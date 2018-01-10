@@ -3,6 +3,7 @@ var router = express.Router();
 var con=require('../bin/dbconnection.js');
 var User = require('../model/user.js');
 var Request_model = require('../model/request.js');
+
 var session = require('express-session');
 var app = express();
 /* GET users listing. */
@@ -11,7 +12,16 @@ router.get('/', function(req, res, next) {
 });
 router.use(session({secret: "chaos is a ladder."}));
 //route to authenticate user
+
+
+
+
+
 router.post('/authenticate', function(req, res, next) {
+
+
+
+
      check_auth_in_db(req.body.email,req.body.pwd,function (data){
          error=data?"":"Come on now! Stop kidding, Enter correct email and password.";
          status=data?1:0;
@@ -21,7 +31,9 @@ router.post('/authenticate', function(req, res, next) {
 });
 //check authentication
 function check_auth_in_db(email,pwd,callback){
-User.find({ username: email,password:pwd }, function(err, user) {
+query={ username: email,password:pwd };
+console.log(query);
+User.find(query, function(err, user) {
   if (err) throw err;
 
   // object of the user

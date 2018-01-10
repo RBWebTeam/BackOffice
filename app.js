@@ -9,7 +9,9 @@ var web = require('./routes/web');
 var users = require('./routes/users');
 var api = require('./routes/api');
 var app = express();
-
+var login = require('./routes/login');
+var  registration = require('./routes/registration');
+var dashboard = require('./routes/dashboard');
 // view engine setup
 // var phpExpress = require('php-express')({
 //   binPath: 'php'
@@ -35,6 +37,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', web);
 app.use('/users', users);
 app.use('/api', api);
+app.use('/login',login)
+app.use('/registration', registration);
+//app.use('/dashboard', dashboard);
+
+//app.use('/registration-data', registration);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

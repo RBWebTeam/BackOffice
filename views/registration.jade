@@ -1,0 +1,41 @@
+extends layout
+block content
+                
+               
+           .continer
+                 br
+                 br
+                 br
+                 .col-md-4
+                 .col-md-4
+                   .login
+                    .logo-bg  
+                       img.img-responsive.img-center(src="/images/logo.png" alt="Image Title")
+                     .login-bdy
+                       h2.text-center REGISTRTION
+                         form(id="registration_form_id")    
+                            .form-group
+                              input.form-control.input-cs(type='text',name="firstName",  placeholder='  Name', required)
+
+                            .form-group
+                              input.form-control.input-cs(type='text',name="last_name",  placeholder='  Last Name', required)
+
+                            .form-group
+                              input.form-control.input-cs(type='phone',name="phone",  placeholder='  Phone', required)
+
+                            .form-group
+                              input.form-control.input-cs(type='text',name="email",  placeholder='  email Number', required)
+
+                            .form-group
+                               input.form-control.input-cs(type='password',name="password",  placeholder='  Password', required id="password")
+
+                            .form-group
+                               input.form-control.input-cs(type='password',name="cpassword",  placeholder='  Confirm Password', required id="cpassword")
+                              
+                             //- input.btn.btn-default.submit-btn(type='button' id="registration_id") 
+                            a(class='btn btn-primary', id='registration_id') Submit
+                            a.forgot-pass.pull-right(href="#") Login 
+                            
+                      .col-md-4
+
+                     //- method="post" action="registration/registration-data"
