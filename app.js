@@ -37,9 +37,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', web);
 app.use('/users', users);
 app.use('/api', api);
-app.use('/login',login)
+app.use('/login',login);
 app.use('/registration', registration);
-//app.use('/dashboard', dashboard);
+app.use('/dashboard', dashboard);
 
 //app.use('/registration-data', registration);
 

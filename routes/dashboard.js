@@ -4,5 +4,7 @@
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  console.log('Dashboard');
+    
+       res.render('dashboard', { title: 'Express' });
 });
+module.exports = router;
