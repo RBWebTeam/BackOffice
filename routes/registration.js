@@ -1,6 +1,7 @@
  var express = require('express');
  var router = express.Router();
  validator = require('express-validator');
+ var session = require('express-session');
 
 var Registration= require('../model/registration.js');
  dbconnection=require('../bin/dbconnection.js');
@@ -18,6 +19,8 @@ router.post('/registration-data', function(req, res, next) {
                    if(status==0){
                    dbconnection.query("INSERT INTO `registrations` (`id`, `firstName`, `last_name`, `phone`, `email`, `password`, `date_time`) VALUES (NULL, '"+req.body.firstName+"', '"+req.body.last_name+"', '"+req.body.phone+"', '"+req.body.email+"', '"+req.body.password+"', 'NULL')", function (err, result, fields) {
                    if (err) throw err;
+                    // req.session.firstNam = req.req.body.firstNam;
+                    // req.session.email = req.req.body.email;
                   });
                    isset=0;
                   }else{

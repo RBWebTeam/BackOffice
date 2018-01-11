@@ -8,7 +8,7 @@ $('#auth_button').click(function (){
    if(! $('#login_form').valid()){
        return false;
    }else{
-           $.post('http://localhost:3000/login/login-authentication', $('#login_form').serialize())
+           $.post('http://localhost:3000/login-authentication', $('#login_form').serialize())
              .done(function(msg){ 
                  if(msg.status===0){
                      // $('#welcome').empty().append("Welcome Mr. "+msg.name);
@@ -49,7 +49,7 @@ $('#registration_id').click(function(){
               .done(function(msg){ 
                        console.log(msg);
                  if(msg.status===0){
-                       window.location.href ="/login";
+                       window.location.href ="/dashboard";
                  }else{
                       alert("User already exists in the current database ");
                  }
