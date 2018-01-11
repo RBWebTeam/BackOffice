@@ -21,11 +21,15 @@
       p
        |Welcome 
        b 
-        |Mr. Durga Pratap Rajbhar 
+            
+            if (Login!='')
+               !{Login}   
+          
       p
        |Last login - Date / Time :
        b
-        |22-09-2017 / 12.45 pm
-     a.pull-right.log-btn(href="#") 
+         if(Last_login)
+         !{Last_login}
+     a.pull-right.log-btn(href="log-out") 
       span#logout-btn
        img(src="/images/icon/exit.png")
