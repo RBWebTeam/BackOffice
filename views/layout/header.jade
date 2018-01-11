@@ -1,6 +1,6 @@
 .container-fluid.hedr   
    .col-md-1.col-xs-2.nopad
-     .menu-btn#sidebarCollapse
+     .menu-btn#sidebarCollapse(onclick="myFunction(this)")
       .bar1
       .bar2
       .bar3
@@ -33,3 +33,27 @@
      a.pull-right.log-btn(href="log-out") 
       span#logout-btn
        img(src="/images/icon/exit.png")
+
+
+
+
+
+
+
+
+
+
+
+                         
+ script.
+     $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
+                 });
+             });
+
+       function myFunction(x) {
+         x.classList.toggle("change");
+        }       
+
+          

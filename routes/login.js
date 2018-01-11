@@ -10,8 +10,8 @@ var session = require('express-session');
 router.use(session({ resave: true ,secret: '123456' , saveUninitialized: true}));
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  //res.render('login', { title: 'Express' });
-  console.log('Hi dp');
+  res.render('login', { title: 'Express' });
+  //console.log('Hi dp');
 });
 
 router.post('/login-authentication', function(req, res, next) {

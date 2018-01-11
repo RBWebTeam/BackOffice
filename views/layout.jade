@@ -1,7 +1,8 @@
 doctype html
 html
   head
-    title= titleFinmart
+    - var title = !{title} || "FIN-MART"
+     title !{title}
 
     
     link(rel='stylesheet', href='stylesheets/bootstrap/bootstrap.min.css')

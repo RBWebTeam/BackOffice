@@ -8,7 +8,7 @@ router.use(session({secret: "chaos is a ladder."}));
 router.get('/',isAuthenticated, function(req, res, next) {
      
     // console.log(req.session.name);
-       res.render('dashboard', { title: 'Express',Login:req.session.name });
+       res.render('dashboard', { title:'Express',Login:req.session.name });
 });
 
 
