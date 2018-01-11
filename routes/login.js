@@ -4,7 +4,8 @@
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('login', { title: 'Express' });
+  //res.render('login', { title: 'Express' });
+  console.log('Hi dp');
 });
 
 router.post('/login-authentication', function(req, res, next) {
