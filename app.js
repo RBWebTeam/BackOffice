@@ -5,9 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var lessMiddleware = require('less-middleware');
-var web = require('./routes/web');
-var users = require('./routes/users');
-var api = require('./routes/api');
+//var web = require('./routes/web');
+//var users = require('./routes/users');
+//var api = require('./routes/api');
 var app = express();
 var login = require('./routes/login');
 var  registration = require('./routes/registration');
@@ -35,8 +35,8 @@ app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //app.use('/', web);
-app.use('/users', users);
-app.use('/api', api);
+//app.use('/users', users);
+//app.use('/api', api);
 app.use('/',login);
 app.use('/registration', registration);
 app.use('/dashboard', dashboard);
@@ -47,7 +47,7 @@ app.use('/dashboard', dashboard);
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
-   res.send('<h1>Page Not Found</h1>');
+   //res.send('<h1>Page Not Found</h1>');
   // next(err);
 });
 

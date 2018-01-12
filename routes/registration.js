@@ -1,17 +1,17 @@
  var express = require('express');
  var router = express.Router();
+ dbconnection=require('../bin/dbconnection.js');
  var session = require('express-session');
- var validator = require('express-validator');
- var Registration= require('../model/registration.js');
- var dbconnection=require('../bin/dbconnection.js');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
    res.render('registration', { title: 'Express' });
 });
 
+
+
 router.post('/registration-data', function(req, res, next) {
-                                    request=new Registration(req.body);
+                                   // request=new Registration(req.body);
                                     check_email(req.body.email,function(status){    isset =null; result=null;
                            if(      status=="200"){
                                     registration_save_fn(req,function(ins_data){  

@@ -12,6 +12,13 @@ router.get('/',isAuthenticated, function(req, res, next) {
 });
 
 
+router.get('/user', function(req, res, next) {
+      
+   res.render('Registration_Form', { title:'Express',Login:"dp" });          
+        
+});
+
+
 function isAuthenticated(req, res, next) {
 
 	 console.log(req.session.name)
