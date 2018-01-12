@@ -17,8 +17,8 @@ function isAuthenticated(req, res, next) {
 	 console.log(req.session.name)
   if (req.session.name)
       return next();
-//  res.redirect('/');
-    res.send("Not authorized");
+        res.redirect('/');
+    //res.send("Not authorized");
 }
 
 module.exports = router;

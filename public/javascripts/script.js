@@ -47,13 +47,15 @@ $('#registration_id').click(function(){
                
                $.post('http://localhost:3000/registration/registration-data', $('#registration_form_id').serialize())
               .done(function(msg){ 
-                       console.log(msg);
-                 if(msg.status===0){
+                 if(msg.data==="200"){
                        window.location.href ="/dashboard";
-                 }else{
-                      alert("User already exists in the current database ");
+                      // console.log(msg);
+                 }else if(msg.data==="400"){
+                          console.log(msg.data);
+                       }else{
+                      console.log(msg);
                  }
-                     })
+             })
              .fail(function(xhr, status, error) {
                  console.log(error);
             });
