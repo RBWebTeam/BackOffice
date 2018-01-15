@@ -3,7 +3,14 @@
  dbconnection=require('../bin/dbconnection.js');
  var session = require('express-session');
 
-router.use(session({secret: "chaos is a ladder."}));
+router.use(session({
+    secret: "dprb",
+    resave: true,
+    saveUninitialized: true
+}));
+
+
+//router.use(session({secret: "chaos is a ladder."}));
 /* GET users listing. */
 router.get('/',isAuthenticated, function(req, res, next) {
      
@@ -11,12 +18,6 @@ router.get('/',isAuthenticated, function(req, res, next) {
        res.render('dashboard', { title:'Express',Login:req.session.name });
 });
 
-
-router.get('/user', function(req, res, next) {
-      
-   res.render('Registration_Form', { title:'Express',Login:"dp" });          
-        
-});
 
 
 function isAuthenticated(req, res, next) {

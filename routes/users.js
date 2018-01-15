@@ -1,9 +1,31 @@
-var express = require('express');
-var router = express.Router();
+ var express = require('express');
+ var router = express.Router({ strict: true });
+ var dbconnection=require('../bin/dbconnection.js');
+ var session = require('express-session');
+ var path    = require("path");
+
+router.use(session({
+    secret: "dprb",
+    resave: true,
+    saveUninitialized: true
+}));
+
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.render('Registration_Form', { title:'Express',Login:"dp" });
 });
+
+
+function isAuthenticated(req, res, next) {
+
+	 console.log(req.session.name)
+  if (req.session.name)
+      return next();
+        res.redirect('/');
+    //res.send("Not authorized");
+}
+
 
 module.exports = router;

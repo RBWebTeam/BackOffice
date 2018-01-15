@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var lessMiddleware = require('less-middleware');
 //var web = require('./routes/web');
-//var users = require('./routes/users');
+var users = require('./routes/users');
 //var api = require('./routes/api');
 var app = express();
 var login = require('./routes/login');
@@ -35,11 +35,14 @@ app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //app.use('/', web);
-//app.use('/users', users);
+app.use('/users', users);
 //app.use('/api', api);
 app.use('/',login);
 app.use('/registration', registration);
 app.use('/dashboard', dashboard);
+
+
+ 
 
 //app.use('/registration-data', registration);
 
