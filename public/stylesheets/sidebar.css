@@ -70,7 +70,7 @@ a, a:hover, a:focus {
 
 #sidebar ul.components {
     padding: 5px 0;
-    border-bottom: 1px solid #47748b;
+   /* border-bottom: 1px solid #47748b;*/
 }
 
 #sidebar ul p {
@@ -143,7 +143,7 @@ a.article, a.article:hover {
     background: #6d7fcc !important;
     color: #fff !important;
 }
-.input-group input{color:#ccc;}
+.input-group input{color:#fff;}
 
 
 /* ---------------------------------------------------
@@ -154,6 +154,7 @@ a.article, a.article:hover {
     min-height: 100vh;
     transition: all 0.3s;
 	background:#f5f5fa;
+	width: 100%;
 	
 }
 

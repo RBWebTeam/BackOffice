@@ -1,50 +1,38 @@
 extends layout
 block content 
-        
-           .container-fluid.white-bg
-                form(method='post', action='submit-query.html')
-                .col-md-8.col-xs-12
-                   .form-group
-                    label.col-sm-3.control-label(for='firstName') User Name
-                    .col-sm-9
-                        input#firstName.form-control(type='text',  , autofocus='')
-                        span.help-block   Name
-
-                    .form-group
-                    label.col-sm-3.control-label(for='firstName') Email ID
-                    .col-sm-9
-                        input#firstName.form-control(type='text',  , autofocus='')
-                        span.help-block Email ID 
-
-                    .form-group
-                    label.col-sm-3.control-label(for='firstName') Password
-                    .col-sm-9
-                        input#firstName.form-control(type='text',  , autofocus='')
-                        span.help-block Password   
-
-                    .form-group
-                    label.col-sm-3.control-label(for='firstName') Confirm Password
-                    .col-sm-9
-                        input#firstName.form-control(type='text', , autofocus='')
-                        span.help-block Confirm Password 
-
-                    .form-group
-                    label.col-sm-3.control-label(for='firstName') Authorities
-                    .col-sm-9
-                       select.selectpicker.select-opt.form-control(required='')
-                        option(value='1') SUB CATEGORIES
-                        option(value='2') HEALTH INSURANCE
-                        option(value='3') MOTOR INSURANCE
-                        option(value='4') TRAVEL INSURANCE
-                        option(value='5') HOME LOAN
-                        option(value='6') PERSONAL LOAN
-                        option(value='7') LOAN AGAINST PROPERTY
-                        span.help-block Confirm Password
-
-
-                .col-md-12.col-xs-12
-                  
-                   .containerscroll
+                     .container
+                        form.form-horizontal(role='form')
+                            h2 Registration Form
+                            .form-group
+                            label.col-sm-3.control-label(for='firstName') Full Name
+                            .col-sm-9
+                                input#firstName.form-control(type='text', placeholder='Full Name', autofocus='')
+                                span.help-block Last Name, First Name, eg.: Smith, Harry
+                            .form-group
+                            label.col-sm-3.control-label(for='email') Email
+                            .col-sm-9
+                                input#email.form-control(type='email', placeholder='Email')
+                            .form-group
+                            label.col-sm-3.control-label(for='password') Password
+                            .col-sm-9
+                                input#password.form-control(type='password', placeholder='Password')
+                            .form-group
+                            label.col-sm-3.control-label(for='birthDate') Date of Birth
+                            .col-sm-9
+                                input#birthDate.form-control(type='date')
+                            .form-group
+                            label.col-sm-3.control-label(for='country') Country
+                            .col-sm-9
+                                 select#country.form-control
+                                    option(value='0') Book A
+                                    option(value='1') Book B
+                                    option(value='2') Book C
+                           
+                             .form-group 
+                            .col-xs-6.col-sm-6.col-md-6
+                                 
+                                  
+                                 .containerscroll
                                     input(type='checkbox')
                                     |  This is checkbox 
                                     br
@@ -112,7 +100,10 @@ block content
                                     |  This is checkbox 
                                     br
 
-                .col-md-8.col-xs-12
-                   
-                    br
-                    input.btn.btn-default.submit-btn.border(type='submit')
+
+                            .form-group
+                            .col-sm-9.col-sm-offset-3
+                                button.btn.btn-primary.btn-block(type='submit') Register
+                       
+                            .form-group 
+                
