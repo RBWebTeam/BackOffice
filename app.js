@@ -12,6 +12,10 @@ var app = express();
 var login = require('./routes/login');
 var  registration = require('./routes/registration');
 var dashboard = require('./routes/dashboard');
+ var session = require('express-session');
+app.use(session({ resave: true ,secret: '123456' , saveUninitialized: true}));
+
+
 // view engine setup
 // var phpExpress = require('php-express')({
 //   binPath: 'php'

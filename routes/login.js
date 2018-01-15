@@ -4,8 +4,6 @@
  dbconnection=require('../bin/dbconnection.js');
  
 
-
-router.use(session({ resave: true ,secret: '123456' , saveUninitialized: true}));
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.render('login', { title: 'Express' });

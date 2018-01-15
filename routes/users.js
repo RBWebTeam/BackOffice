@@ -1,20 +1,16 @@
  var express = require('express');
  var router = express.Router({ strict: true });
  var dbconnection=require('../bin/dbconnection.js');
- var session = require('express-session');
+// var session = require('express-session');
  var path    = require("path");
 
-router.use(session({
-    secret: "dprb",
-    resave: true,
-    saveUninitialized: true
-}));
-
+ 
 
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/',isAuthenticated, function(req, res, next) {
   res.render('Registration_Form', { title:'Express',Login:"dp" });
+    
 });
 
 
