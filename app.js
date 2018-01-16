@@ -14,7 +14,7 @@ var login = require('./routes/login');
 var  registration = require('./routes/registration');
 var dashboard = require('./routes/dashboard');
 var session = require('express-session');
-
+var FSM_details = require('./routes/FSM_details');
 
 
 
@@ -42,7 +42,7 @@ app.use('/',login);
 app.use('/registration', registration);
 app.use('/dashboard', dashboard);
 app.use('/fba-list', fba);
-
+app.use('/fsm-details', FSM_details);
  
 
 //app.use('/registration-data', registration);
