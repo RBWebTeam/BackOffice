@@ -5,30 +5,27 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var lessMiddleware = require('less-middleware');
+var app = express();
+
 //var web = require('./routes/web');
 var users = require('./routes/users');
-//var api = require('./routes/api');
-var app = express();
+var fba = require('./routes/FBA');
 var login = require('./routes/login');
 var  registration = require('./routes/registration');
 var dashboard = require('./routes/dashboard');
- var session = require('express-session');
+var session = require('express-session');
+
+
+
+
+
 app.use(session({ resave: true ,secret: '123456' , saveUninitialized: true}));
-
-
-// view engine setup
-// var phpExpress = require('php-express')({
-//   binPath: 'php'
-// });
-
 // set view engine to php-express
 app.set('views', './views');
 // app.engine('php', phpExpress.engine);
 app.set('view engine', 'jade');
  
-// routing all .php file to php-express
-//app.all(/.+\.php$/, phpExpress.router);
-
+ 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public/images/icon', '1.png')));
 app.use(logger('dev'));
@@ -44,7 +41,7 @@ app.use('/users', users);
 app.use('/',login);
 app.use('/registration', registration);
 app.use('/dashboard', dashboard);
-
+app.use('/fba-list', fba);
 
  
 
