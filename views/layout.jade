@@ -20,6 +20,22 @@ html
     
 script(type='text/javascript' src='javascripts/script.js')
 script(type='text/javascript' src='javascripts/jquery.validate.min.js')
+script.
+  function myFunction(x) {
+  x.classList.toggle("change");
+  }
+script.
+  $(document).ready(function(){
+  $(".search-btn").click(function(){
+  $(".search-dv").toggle("slow");
+  });
+  });
+script(type='text/javascript').
+  $(document).ready(function () {
+  $('#sidebarCollapse').on('click', function () {
+  $('#sidebar').toggleClass('active');
+  });
+  });
 
 
 
