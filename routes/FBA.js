@@ -8,15 +8,23 @@
 /* GET users listing. */
 router.get('/',isAuthenticated, function(req, res, next) {
 
-res.render('FBA/fba.jade', { title:'Express',Login:"dp" }); 
+    //  dbconnection.query("CALL usp_emp_login('"+ req.body.email + "','" + req.body.pwd + "')",function(err, rows){
+    //         if (err) throw err;
+    //        var jsonData = JSON.stringify(rows[0]);
+    //        var javascriptObject = JSON.parse(jsonData);
+            
+    //  });
+
+
+res.render('FBA/fba.jade', { title:'Express',Login:"dp",usernameLogin:req.session.username,lastLogin:req.session.last_login }); 
 
 });
 
 
 function isAuthenticated(req, res, next) {
 
-	 console.log(req.session.name)
-  if (req.session.name)
+	 console.log(req.session.username)
+  if (req.session.username)
       return next();
         res.redirect('/');
     //res.send("Not authorized");

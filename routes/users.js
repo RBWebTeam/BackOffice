@@ -22,8 +22,8 @@ async.series({
         }
     }, function(error, results) {
         if (!error) {
-                    
-             res.render('Registration_Form', { title:'Express',Login:"dp",state:results.state_m,authorities_:results.authorities});
+                     
+             res.render('Registration_Form', { title:'Express',Login:"dp",state:results.state_m,authorities_:results.authorities,usernameLogin:req.session.username,lastLogin:req.session.last_login});
         }
     });
 });
@@ -35,7 +35,7 @@ router.post('/register', function(req, res, next) {
             if (err) throw err;
            var jsonData = JSON.stringify(rows[0]);
            var javascriptObject = JSON.parse(jsonData);
-            if(javascriptObject[0].result==0){
+            if(javascriptObject[0].result!=0){
                   res.send({'status':'Success','data':'200'}); 
             }else{
                   res.send({'status':'This name has already been used','data':'400'});
@@ -45,8 +45,8 @@ router.post('/register', function(req, res, next) {
 
   
 function isAuthenticated(req, res, next) {
-	 console.log(req.session.name)
-  if (req.session.name)
+	 console.log(req.session.username)
+  if (req.session.username)
       return next();
         res.redirect('/');
     //res.send("Not authorized");

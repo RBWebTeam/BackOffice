@@ -14,16 +14,16 @@ router.use(session({
 /* GET users listing. */
 router.get('/',isAuthenticated, function(req, res, next) {
      
-    // console.log(req.session.name);
-       res.render('dashboard', { title:'Express',Login:req.session.name });
+    // console.log(req.session.last_login);
+       res.render('dashboard', { title:'Express',usernameLogin:req.session.username,lastLogin:req.session.last_login });
 });
 
 
 
 function isAuthenticated(req, res, next) {
 
-	 console.log(req.session.name)
-  if (req.session.name)
+	 console.log(req.session.username)
+  if (req.session.username)
       return next();
         res.redirect('/');
     //res.send("Not authorized");

@@ -16,12 +16,12 @@
     .pull-right.log-txt
       p
         span.hidden-xs Welcome 
-        b Mr. Yogaraj Patel
+        b  #{usernameLogin ? usernameLogin : ' '}
       p
         span.hidden-xs Last login - Date / Time :
-        b 22-09-2017 / 12.45 pm
+        b #{lastLogin ? lastLogin : '11 '}
   .col-md-1.col-xs-2.no-mob-pad
-    a.pull-right.log-btn(href='#')
+    a.pull-right.log-btn(href='/log-out')
       span.logout-btn
         img(src='images/icon/exit.png')
   span.search-btn.hidden-md.hidden-lg.pull-right

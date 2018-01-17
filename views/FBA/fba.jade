@@ -7,7 +7,7 @@ block content
   .col-md-12
     .overflow-scroll
       .table-responsive
-        table.table.table-bordered.table-striped.tbl
+        table#datatable.table.table-bordered.table-striped.tbl
           thead
             tr
               th Full Name
@@ -25,6 +25,8 @@ block content
               th Documents
               th Bank Account
           tbody
+           
+           - for (var i = 0; i < 30; ++i) {
             tr
               td LAKHINANDAN SHARMA
               td 16 Jan 2017
@@ -40,3 +42,4 @@ block content
               td  
               td Pending
               td No
+          -}

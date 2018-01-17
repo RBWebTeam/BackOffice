@@ -20,9 +20,10 @@ router.post('/login-authentication', function(req, res, next) {
                   result={'status':1,'name':"The email and password you entered don't match."};
             }else{
                   
-                   sess.email=javascriptObject[0].emp_id;
-                   sess.name=javascriptObject[0].username;
-                   sess.name=javascriptObject[0].emailid;
+                   sess.emp_id=javascriptObject[0].emp_id;
+                   sess.username=javascriptObject[0].username;
+                   sess.emailid=javascriptObject[0].emailid;
+                   sess.last_login=javascriptObject[0].last_login;
                    result={'status':0,'name':"Success...."};
             }   
 
