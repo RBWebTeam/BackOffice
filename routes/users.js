@@ -1,59 +1,55 @@
  var express = require('express');
  var router = express.Router({ strict: true });
  var dbconnection=require('../bin/dbconnection.js');
-var async = require('async');
+ var async = require('async');
  var path    = require("path");
 
   
 
 
 /* GET users listing. */
-router.get('/',isAuthenticated, function(req, res, next) {
-                         
-                    // var data=   registration_save_fn(function(data){ return data; } );             
-                  
- 
-
+router.get('/',isAuthenticated, function(req, res, next) {                               
 async.series({
-        slider: function(cb) {
-            dbconnection.query("SELECT * from state_master ORDER BY state_id ASC LIMIT  5", function (error, result, client){
+        state_m: function(cb) {
+            dbconnection.query("SELECT * from state_master", function (error, result, client){
                 cb(error, result);
             })
         },
-        new: function(cb){
-            dbconnection.query("SELECT * from state_master ORDER BY state_id ASC LIMIT  1 ", function (error, result, client){
+        authorities: function(cb){
+            dbconnection.query("SELECT * from authorities ", function (error, result, client){
                 cb(error, result)
             })
         }
     }, function(error, results) {
         if (!error) {
-            
-             res.render('Registration_Form', { title:'Express',Login:"dp",state:results.slider });
+                    
+             res.render('Registration_Form', { title:'Express',Login:"dp",state:results.state_m,authorities_:results.authorities});
         }
     });
-
-
-
-
 });
 
+ 
 
-//   state master
- function registration_save_fn(callback){ 
-         dbconnection.query("SELECT * from state_master", function (err, result, fields) {
-                    if (err) throw err;
-                     return  callback(result);
-         });     
- }
+router.post('/register', function(req, res, next) {       
+    dbconnection.query("CALL usp_insert_emp_login_new('"+ req.body.username + "','" + req.body.emailid + "','" + req.body.password + "','" + req.body.emptype + "')",function(err, rows){
+            if (err) throw err;
+           var jsonData = JSON.stringify(rows[0]);
+           var javascriptObject = JSON.parse(jsonData);
+            if(javascriptObject[0].result==0){
+                  res.send({'status':'Success','data':'200'}); 
+            }else{
+                  res.send({'status':'This name has already been used','data':'400'});
+            }     
+});   
+});
 
+  
 function isAuthenticated(req, res, next) {
-
 	 console.log(req.session.name)
   if (req.session.name)
       return next();
         res.redirect('/');
     //res.send("Not authorized");
 }
-
 
 module.exports = router;

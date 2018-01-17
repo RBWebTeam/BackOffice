@@ -35,7 +35,10 @@ $(function() {
 
 
 $('#registration_id').click(function(){
- if(! $('#registration_form_id').valid()){
+
+ if(! $('#registration_form_id').valid()){  console.log("sfsdf");
+             
+
        return false;
    }else{
             var pass=$('#password').val();
@@ -44,7 +47,6 @@ $('#registration_id').click(function(){
                alert("length must be exactly 6 characters")
           }else{
             if(pass==cpass){
-               
                $.post('http://localhost:3000/registration/registration-data', $('#registration_form_id').serialize())
               .done(function(msg){ 
                  if(msg.data==="200"){
@@ -69,3 +71,58 @@ $('#registration_id').click(function(){
    }
 
 });  
+
+
+//  Emp Login form
+$('#registration_from_id').click(function(event){  event.preventDefault();
+  validator=$('#registration_from').validate();
+   if(!$('#registration_from').valid()){
+        $.each(validator.errorMap, function (index, value) {
+             $('#'+index).focus();
+           return false;
+         });
+       return false;
+   }else{
+
+           var pass=$('#password').val();
+           var cpass=$('#cpassword').val();
+           if($('#emptype').val()==0){
+                $('#emptype').focus();
+                return false;
+           }else if($('[name="authorities_[]"]:checked').length==0){
+                  alert("Please select check box");
+                   return false;
+           }else if($('[name="state_id_[]"]:checked').length==0){
+                         alert("Please select state");
+                   return false;
+           }else if (pass.length < 6) {
+               alert("length must be exactly 6 characters")
+          }else{
+            if(pass==cpass){
+                  $.post('/users/register', $('#registration_from').serialize())
+                   .done(function(msg){ 
+                   if(msg.data==="200"){
+                      // console.log(msg);
+                       alert(msg.status);
+                          
+                   }else if(msg.data==="400"){
+                         // console.log(msg.data);
+                          alert(msg.status);
+                   }else{
+                      console.log(msg);
+                  }
+                  }).fail(function(xhr, status, error) {
+                 console.log(error);
+            });
+            }else{
+                alert("Confirm Password...");    
+            }
+          }
+
+           
+   }
+
+
+});
+
+

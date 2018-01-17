@@ -5,92 +5,51 @@ block content
   .container-fluid.white-bg
     .col-md-12
       h3.mrg-btm REGISTER USER
-    form(method='post', action='submit-query.html')
+    form(id="registration_from")
       .col-md-12.col-xs-12
         .form-group
           label Username
-          input.form-control(type='text')
+          input.form-control(type='text' name="username" id="username"   required)
       .col-md-12.col-xs-12
         .form-group
           label Email Id
-          input.form-control(type='email')
+          input.form-control(type='email' name="emailid" id="emailid" value="dp@gmail.com" required)
       .col-md-12.col-xs-12
         .form-group
           label Password
-          input.form-control(type='password')
+          input.form-control(type='password' name="password" id="password" value="123456" required)
       .col-md-12.col-xs-12
         .form-group
           label Confirm Password
-          input.form-control(type='password')
+          input.form-control(type='password' id="cpassword" value="123456" required)
       .col-md-12.col-xs-12
         .form-group
-          select.selectpicker.select-opt.form-control(required='')
-            option(value='1') Authorities
-            option(value='1') SUB CATEGORIES
-            option(value='2') HEALTH INSURANCE
-            option(value='3') MOTOR INSURANCE
-            option(value='4') TRAVEL INSURANCE
-            option(value='5') HOME LOAN
-            option(value='6') PERSONAL LOAN
-            option(value='7') LOAN AGAINST PROPERTY
+          select#emptype.selectpicker.select-opt.form-control( name="emptype" required)
+            option(value='0') -- Select User Type --
+            option(value='1') Normal User
+            option(value='2') Insurer
+            option(value='3') Admin
+           
       .form-group
         .col-xs-12.form-padding.top-lead
           #AuthorityV.col-sm-6.col-xs-12.form-padding(style='overflow-y:scroll;height:270px;')
             div
               table#Body_gvAuthority.table.table-responsive.table-hover(cellspacing='0', style='border-style:None;border-collapse:collapse;')
                 tbody
-                      
-                                    input(type='checkbox')
-                                    |  This is checkbox 
-                                    br
-                                    input(type='checkbox')
-                                    |  This is checkbox 
-                                    br
-                                    input(type='checkbox')
-                                    |  This is checkbox 
-                                    br
-                                    input(type='checkbox')
-                                    |  This is checkbox 
-                                    br
-                                    input(type='checkbox')
-                                    |  This is checkbox 
-                                    br
-                                    input(type='checkbox')
-                                    |  This is checkbox 
-                                    br
-                                    input(type='checkbox')
-                                    |  This is checkbox 
-                                    br
-                                    input(type='checkbox')
-                                    |  This is checkbox 
-                                    br
-                                    input(type='checkbox')
-                                    |  This is checkbox 
-                                    br
-                                    input(type='checkbox')
-                                    |  This is checkbox 
-                                    br
-                                    
-                                    
+                    each item in authorities_
+                        input(type='checkbox' name="authorities_[]" value=(item.Menu))
+                        =item.Menu
+                        br        
           #StatesV.col-sm-6.col-xs-12.form-padding(style='overflow-y:scroll;height:270px;')
             div
               table#Body_gvStateList.table.table-responsive.table-hover(cellspacing='0', style='border-style:None;border-collapse:collapse;')
-                tbody
-                              
-                                    
-                                     each item in state
-                                          input(type='checkbox' name="state_id" value=(item.state_id))
-                                          =item.state_name
-                                          br
-                                      
-                                      
-                                    
-                                    
-
-
-
-
-
+                tbody  
+                    each item in state
+                        input(type='checkbox' name="state_id_[]" value=(item.state_id))
+                        =item.state_name
+                        br                                        
       .col-md-12.col-xs-12
         br
-        input.btn.btn-default.submit-btn.border(type='submit')
+        input#registration_from_id.btn.btn-default.submit-btn.border(type='submit')
+       
+       

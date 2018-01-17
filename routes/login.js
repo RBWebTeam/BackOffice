@@ -11,14 +11,24 @@ router.get('/', function(req, res, next) {
 
 router.post('/login-authentication', function(req, res, next) {
   sess = req.session;
-        Login_query(req,function(get_data){
-            if(get_data==0){
-               result={'status':0,'name':"Success...."};
+  dbconnection.query("CALL usp_emp_login('"+ req.body.email + "','" + req.body.pwd + "')",function(err, rows){
+            if (err) throw err;
+           var jsonData = JSON.stringify(rows[0]);
+           var javascriptObject = JSON.parse(jsonData);
+            if(javascriptObject[0].result==1){
+                  console.log(javascriptObject);
+                  result={'status':1,'name':"The email and password you entered don't match."};
             }else{
-                result={'status':1,'name':"Come on now! Stop kidding, Enter correct email and password.."};
-            }
-            res.send(result);     
-        });
+                  
+                   sess.email=javascriptObject[0].emp_id;
+                   sess.name=javascriptObject[0].username;
+                   sess.name=javascriptObject[0].emailid;
+                   result={'status':0,'name':"Success...."};
+            }   
+
+             res.send(result);  
+});
+
 });
 
 router.get('/log-out', function(req, res, next) {
