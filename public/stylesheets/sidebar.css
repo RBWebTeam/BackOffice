@@ -155,7 +155,7 @@ a.article, a.article:hover {
     transition: all 0.3s;
 	background:#f5f5fa;
 	width: 100%;
-	overflow:scroll;
+    overflow:scroll;
 	
 }
 

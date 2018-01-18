@@ -1,13 +1,43 @@
 extends ../layout
 block content
         
+ 
  .container-fluid.white-bg
   .col-md-12
     h3.mrg-btm FBA List
+  // Filter Strat
+  .col-md-12
+    .panel.panel-primary
+      .panel-heading
+        h3.panel-title Filter
+        .pull-right
+          span.clickable.filter(data-toggle='tooltip', data-container='body')
+            span.glyphicon.glyphicon-plus.glyphicon1
+            span.glyphicon.glyphicon-filter.glyphicon1.fltr-tog
+      .panel-body.filter-bdy(style='display:none')
+        input#dev-table-filter.form-control(type='text', data-action='filter', data-filters='#dev-table', placeholder='Search...')
+  // Filter End
+  // Date Start
+  .col-md-4
+    .form-group
+      .input-group.input-append.date
+        input.form-control(type='date', value='From Date', placeholder='from Date')
+        span.input-group-addon.add-on
+          span.glyphicon.glyphicon-calendar
+  .col-md-4
+    .form-group
+      .input-group.input-append.date
+        input.form-control(type='date', value='To Date', placeholder='To Date')
+        span.input-group-addon.add-on
+          span.glyphicon.glyphicon-calendar
+  .col-md-4
+    .form-group
+      button.btn.btn-success.mrg-top SHOW
+  // Date End
   .col-md-12
     .overflow-scroll
       .table-responsive
-        table#datatable.table.table-bordered.table-striped.tbl
+        table.table.table-bordered.table-striped.tbl
           thead
             tr
               th Full Name
@@ -17,29 +47,58 @@ block content
               th
               th Password
               th City
-              th FSM Name
+              th Pincode
+              th FSM Details
               th POSP No
               th Loan ID
               th Posp Name
               th Partner Info
               th Documents
               th Bank Account
+              th SMS
           tbody
-           
-           - for (var i = 0; i < 30; ++i) {
             tr
               td LAKHINANDAN SHARMA
               td 16 Jan 2017
               td 9954429253
               td lakhinandanlicisssssssssssss@gmail.com
-              td payment Link
-              td *****
+              td
+                a(href='#', data-toggle='modal', data-target='#paymentLink') payment Link
+              td
+                a(href='#', data-toggle='modal', data-target='#showPassword') *****
               td DIBRUGARH
-              td 785675
+              td Pincode
+              td
+                a(href='#', data-toggle='modal', data-target='#fsmDetails') FSM
               td dgdg
-              td UPDATE
-              td 36892
-              td  
-              td Pending
+              td
+                a(href='#', data-toggle='modal', data-target='#updatePosp') UPDATE
+              td Durgapratap Rajbhar
+              td
+                a(href='#', data-toggle='modal', data-target='#partnerInfo') Partner Info
+              td
+                a(href='#') Pending
               td No
-          -}
+              td
+                a(href='#', data-toggle='modal', data-target='#sendSms') SMS
+    h5.pull-left.padd-obj
+      b Records :
+      span 1 to 10 
+      | Of 
+      span.badge 186
+      h5
+        ul.pagination.pull-right
+          li
+            a(href='#') 1
+          li
+            a(href='#') 2
+          li
+            a(href='#') 3
+          li
+            a(href='#') 4
+          li
+            a(href='#') 5
+
+
+
+
