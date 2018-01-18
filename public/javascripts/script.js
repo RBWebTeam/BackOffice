@@ -131,7 +131,7 @@ $('#registration_from_id').click(function(event){  event.preventDefault();
 //  date time formate
  
     function DisplayCurrentTime(data) {
-        var date = new Date('2018-01-17 18:43:34');
+        var date = new Date(data);
         var hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
         var am_pm = date.getHours() >= 12 ? "PM" : "AM";
         hours = hours < 10 ? "0" + hours : hours;
