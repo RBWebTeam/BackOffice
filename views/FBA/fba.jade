@@ -57,6 +57,7 @@ block content
               th Bank Account
               th SMS
           tbody
+          - for (var i = 0; i < 30; ++i) {
             tr
               td LAKHINANDAN SHARMA
               td 16 Jan 2017
@@ -81,6 +82,7 @@ block content
               td No
               td
                 a(href='#', data-toggle='modal', data-target='#sendSms') SMS
+          -}
     h5.pull-left.padd-obj
       b Records :
       span 1 to 10 
