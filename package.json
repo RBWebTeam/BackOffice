@@ -20,6 +20,9 @@
     "mongoose": "^5.0.0-rc1",
     "morgan": "~1.9.0",
     "mysql": "github:mysqljs/mysql",
+    "nodemailer": "^4.4.1",
+    "otplib": "^7.0.0",
+    "sendotp": "^1.2.8",
     "serve-favicon": "~2.4.5"
   },
   "devDependencies": {

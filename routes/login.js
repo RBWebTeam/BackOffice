@@ -1,12 +1,29 @@
  var express = require('express');
  var router = express.Router();
  var session = require('express-session');
+ const SendOtp = require('sendotp');
+ const sendOtp = new SendOtp('http://services.rupeeboss.com/LoginDtls.svc/xmlservice/sendSMS');
  dbconnection=require('../bin/dbconnection.js');
  
+ 
+
+var abc={
+"mobNo":"8898540057",
+"msgData":"dp",
+"source":"web"
+};
+ 
+
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('login', { title: 'Express' });
+ 
+// sendOtp.send("8898540057", "source", function (error, data, response) {
+//   console.log(data);
+// });
+
+        res.render('login', { title: 'Express' });
 });
 
 router.post('/login-authentication', function(req, res, next) {
