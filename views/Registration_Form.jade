@@ -13,15 +13,15 @@ block content
       .col-md-12.col-xs-12
         .form-group
           label Email Id
-          input.form-control(type='email' name="emailid" id="emailid" value="dp@gmail.com" required)
+          input.form-control(type='email' name="emailid" id="emailid"   required)
       .col-md-12.col-xs-12
         .form-group
           label Password
-          input.form-control(type='password' name="password" id="password" value="123456" required)
+          input.form-control(type='password' name="password" id="password"   required)
       .col-md-12.col-xs-12
         .form-group
           label Confirm Password
-          input.form-control(type='password' id="cpassword" value="123456" required)
+          input.form-control(type='password' id="cpassword"   required)
       .col-md-12.col-xs-12
         .form-group
           select#emptype.selectpicker.select-opt.form-control( name="emptype" required)
@@ -36,18 +36,22 @@ block content
             div
               table#Body_gvAuthority.table.table-responsive.table-hover(cellspacing='0', style='border-style:None;border-collapse:collapse;')
                 tbody
-                    each item in authorities_
-                        input(type='checkbox' name="authorities_[]" value=(item.Menu))
-                        =item.Menu
-                        br        
+                     b  AUTHORITIES
+                           br  
+                        each item in authorities_
+                            input(type='checkbox' name="authorities_[]" value=(item.Menu))
+                            =item.Menu
+                            br        
           #StatesV.col-sm-6.col-xs-12.form-padding(style='overflow-y:scroll;height:270px;')
             div
               table#Body_gvStateList.table.table-responsive.table-hover(cellspacing='0', style='border-style:None;border-collapse:collapse;')
                 tbody  
-                    each item in state
-                        input(type='checkbox' name="state_id_[]" value=(item.state_id))
-                        =item.state_name
-                        br                                        
+                     b  States 
+                           br  
+                        each item in state
+                            input(type='checkbox' name="state_id_[]" value=(item.state_id))
+                            =item.state_name
+                            br                                        
       .col-md-12.col-xs-12
         br
         input#registration_from_id.btn.btn-default.submit-btn.border(type='submit')

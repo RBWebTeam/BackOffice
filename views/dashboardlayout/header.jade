@@ -19,7 +19,7 @@
         b  #{usernameLogin ? usernameLogin : ' '}
       p
         span.hidden-xs Last login - Date / Time :
-        b #{lastLogin ? lastLogin : '11 '}
+        b(class="#{lastLogin}",id="lastLogin")
   .col-md-1.col-xs-2.no-mob-pad
     a.pull-right.log-btn(href='/log-out')
       span.logout-btn

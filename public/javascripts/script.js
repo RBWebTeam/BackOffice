@@ -126,3 +126,31 @@ $('#registration_from_id').click(function(event){  event.preventDefault();
 });
 
 
+
+
+//  date time formate
+ 
+    function DisplayCurrentTime(data) {
+        var date = new Date('2018-01-17 18:43:34');
+        var hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
+        var am_pm = date.getHours() >= 12 ? "PM" : "AM";
+        hours = hours < 10 ? "0" + hours : hours;
+        var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+        var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+      return   time = hours + ":" + minutes + ":" + seconds + " " + am_pm;
+    };
+          
+                    window.onload = function () {
+                          var date=$('#lastLogin').attr('class');
+                             $('#lastLogin').append(DisplayCurrentTime(date));
+                           };
+
+
+$('.delPop').popover({
+    placement: 'bottom',
+    html: true,
+    
+});
+$(document).on('click',"input[type=button].cancelPop", function () {
+    $(".delPop").popover('hide');
+});         
