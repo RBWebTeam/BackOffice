@@ -5,6 +5,7 @@ th {white-space: nowrap;background: #a9d8ec;border: 1px solid #8cc9e2 !important
 td {white-space: nowrap;}
 .glyphicon1 {top:-14px !important; cursor:pointer;}
 .mrg-tp-forteen {top:-14px !important;}
+textarea {width:100%;}
 
 .panel-primary>.panel-heading {
     color: #565454 !important;
