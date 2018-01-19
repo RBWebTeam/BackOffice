@@ -154,3 +154,17 @@ $('.delPop').popover({
 $(document).on('click',"input[type=button].cancelPop", function () {
     $(".delPop").popover('hide');
 });         
+
+
+$(document).ready(function() {
+    $('#datatable').DataTable();
+} );
+
+
+ 
+    $(document).ready(function() {
+    $('#datatable').DataTable( {
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+    } );
+} );
+ 
