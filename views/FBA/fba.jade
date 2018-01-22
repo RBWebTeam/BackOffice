@@ -1,45 +1,14 @@
 extends ../layout
 block content
         
- 
- .container-fluid.white-bg
-  .col-md-12
-    h3.mrg-btm FBA List
-  // Filter Strat
-  .col-md-12
-    .panel.panel-primary
-      .panel-heading
-        h3.panel-title Filter
-        .pull-right
-          span.clickable.filter(data-toggle='tooltip', data-container='body')
-            span.glyphicon.glyphicon-plus.glyphicon1
-            span.glyphicon.glyphicon-filter.glyphicon1.fltr-tog
-      .panel-body.filter-bdy(style='display:none')
-        input#dev-table-filter.form-control(type='text', data-action='filter', data-filters='#dev-table', placeholder='Search...')
-  // Filter End
-  // Date Start
-  .col-md-4
-    .form-group
-      .input-group.input-append.date
-        input.form-control(type='date', value='From Date', placeholder='from Date')
-        span.input-group-addon.add-on
-          span.glyphicon.glyphicon-calendar
-  .col-md-4
-    .form-group
-      .input-group.input-append.date
-        input.form-control(type='date', value='To Date', placeholder='To Date')
-        span.input-group-addon.add-on
-          span.glyphicon.glyphicon-calendar
-  .col-md-4
-    .form-group
-      button.btn.btn-success.mrg-top SHOW
-  // Date End
-  .col-md-12
-    .overflow-scroll
-      .table-responsive
-        table#datatable-responsive.table.table-striped.table-bordered.dt-responsive.nowrap
-          thead
-            tr
+           
+  .table-responsive
+    input#fromdate(type='text', name='fromdate')
+    input#tromdate(type='text', name='tromdate')
+    input#submit(type='submit', name='submit') 
+    table#example.datatable-responsive.table.table-striped.table-bordered.dt-responsive.nowrap
+      thead
+           tr
               th Full Name
               th Created Date
               th Mobile No
@@ -56,51 +25,231 @@ block content
               th Documents
               th Bank Account
               th SMS
-          tbody
-          - for (var i = 0; i < 30; ++i) {
+              th Sales Code
+      
+      tbody
+          
+         each item in objs
+            
             tr
-              td LAKHINANDAN SHARMA
-              td 16 Jan 2017
-              td 9954429253
-              td lakhinandanlicisssssssssssss@gmail.com
+              td #{item.FullName}
+              td #{item.createdate}
+              td #{item.MobiNumb1}
+              td #{item.EMaiID}
+              td   
+                 if item.POSPNo
+                  a.popover-Payment(tabindex='0', title='Payment Link', data-trigger='click', data-placement='bottom', data-container='body', data-html='true', data-content='<div id="popover-content">\
+                   <a href="#{item.Link}">#{item.Link}</a> \
+                   </div>') Payment Link
+                 else
+                    
+                    
               td
-                a(href='#', data-toggle='modal', data-target='#paymentLink') payment Link
+                 a.popover-Password(href="#", data-toggle='popover', title='Show Password', data-content="#{item.Password}") ******** 
+              td #{item.city}
+              td #{item.Pincode}
+              td  FSM
+              td   
+                  if item.POSPNo
+                   = item.POSPNo
+                  else
+                     a(href='#' onclick="POSP_UPDATE(#{item.fbaid})" id="#{item.fbaid}" ) 
+                        | update 
+                          
+              td 
+                  if item.LoanID
+                   = item.LoanID
+                  else
+                     a(href='#', onclick="LoanID_UPDATE(#{item.fbaid})" id="LoanID#{item.fbaid}") 
+                        | update 
+                
+              td #{item.pospname}
+              td #{item.PartnerID}
+              td Pending
+              td #{item.bankaccount}
+              td 
+                 a(href='#', onclick="SMS_FN(#{item.fbaid},#{item.MobiNumb1})") 
+                  |SMS
               td
-                a(href='#', data-toggle='modal', data-target='#showPassword') *****
-              td DIBRUGARH
-              td Pincode
-              td
-                a(href='#', data-toggle='modal', data-target='#fsmDetails') FSM
-              td dgdg
-              td
-                a(href='#', data-toggle='modal', data-target='#updatePosp') UPDATE
-              td Durgapratap Rajbhar
-              td
-                a(href='#', data-toggle='modal', data-target='#partnerInfo') Partner Info
-              td
-                a(href='#') Pending
-              td No
-              td
-                a(href='#', data-toggle='modal', data-target='#sendSms') SMS
-          -}
-    h5.pull-left.padd-obj
-      b Records :
-      span 1 to 10 
-      | Of 
-      span.badge 186
-      h5
-        ul.pagination.pull-right
-          li
-            a(href='#') 1
-          li
-            a(href='#') 2
-          li
-            a(href='#') 3
-          li
-            a(href='#') 4
-          li
-            a(href='#') 5
+                 a(href='#', onclick="Sales_Code()") 
+                       |update
+              
+        
+
+             
+   .sms_sent_id.modal.fade(role='dialog')    
+    .modal-dialog(role='document')
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+          h4.modal-title SEND SMS
+        .modal-body
+          form(id="message_sms_id")
+            .form-group
+              label.control-label(for='recipient-name') Mobile Nubmer:
+              input#recipient-name.form-control.Mobile_ID(type='text'   name="mobile_no" readonly='')
+              input#fba_id(type='hidden', name='fbaid'  )
+            .form-group
+              label.control-label(for='message-text') SMS :
+              textarea#message-text.form-controll.sms_id(name='sms')
+          .modal-footer
+               
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-primary.message_sms_id(type='button') Save changes
+            b.alert-success.primary#strong_id
 
 
+   .updatePosp.modal.fade(role='dialog')    
+    .modal-dialog(role='document')
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+          h4.modal-title UPDATE POSP
+        .modal-body
+          form(id="posp_from_id")
+            .form-group
+              input#fba_id_posp(type='hidden', name='fbaid'  )
+              input#flage_id(type='hidden', name='flage_id'    )
+            .form-group
+              label.control-label(for='message-text') POSP :
+              input#posp_name_id.recipient-name.form-control(type='text', name='posp_name' onkeypress="return Numeric(event)")
+          .modal-footer  
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-primary.posp_from_id(type='button') Save changes
+            b.alert-success.primary#strong_lead         
+          
+  
+                         //- javascript
+        script(type='text/javascript').
+          $(document).ready(function() {
+          $('#example').DataTable( {
+          "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+          } );
+          } );
+          $('.popover-Payment').popover({
+            trigger: 'focus'
+          });
+
+           $('.popover-Password').popover({
+            trigger: 'focus'
+          });
 
 
+            
+            
+             function Sales_Code() {
+              console.log('something');
+             }
+             
+             function SMS_FN(id,mb){
+                  $('.Mobile_ID').val(mb);
+                  $('#fba_id').val(id);
+                  $('.sms_sent_id').modal('show');
+             }
+
+             function POSP_UPDATE(id){
+                            
+                       $('#flage_id').val(1);
+                       $('#fba_id_posp').val(id);
+                       $('.updatePosp').modal('show');
+                    
+             }
+
+             function LoanID_UPDATE(id){
+                       $('#flage_id').val(2);
+                       $('#fba_id_posp').val(id);
+                       $('.updatePosp').modal('show');
+
+             }
+          
+                                   // Sent sms popup
+            $('.message_sms_id').click(function(event){  event.preventDefault();
+                       var sms=$('.sms_id').val();
+                                
+                          if(sms){
+                              $.post('/fba-list/sms', $('#message_sms_id').serialize())
+                               .done(function(msg){ 
+                                  //{ message: 'SMS Sent', status: 'success', statusId: 0 }
+                                      if(msg.statusId==0){
+                                         $('#strong_id').html('<strong>Success!</strong> SMS Sent successful..');
+                                      }
+                                   console.log(msg);
+                               }).fail(function(xhr, status, error) {
+                               console.log(error);
+                               });
+                          }else{
+                              alert("abc..");
+                          }
+            });
+                                           // POSP UPADTE MODEL
+             $('.posp_from_id').click(function(event){  event.preventDefault();
+                       var sms=$('#posp_name_id').val();
+                                 
+                          if(sms){
+                              $.post('/fba-list/posp-update', $('#posp_from_id').serialize())
+                               .done(function(msg){ 
+                                              if(msg.status==0){
+                                                                    
+                                                                   $('#strong_lead').html('<strong>Success!</strong>  update..');
+                                                                    if($('#flage_id').val()==1){
+                                                                    fba_id_posp=$('#fba_id_posp').val();
+                                                                    $('#'+fba_id_posp).empty();
+                                                                    $('#'+fba_id_posp).append($('#posp_name_id').val());
+                                                                    }if($('#flage_id').val()==2){
+                                                                         //LoanID
+
+                                                                    fba_id_posp=$('#fba_id_posp').val();
+                                                                      alert(fba_id_posp);
+                                                                     $('#LoanID'+fba_id_posp).empty();
+                                                                     $('#LoanID'+fba_id_posp).append($('#posp_name_id').val());
+                                                                    }
+                                                   
+
+                                                        setTimeout(function () {
+                                                             $( '#posp_from_id' ).each(function(){
+                                                                this.reset();
+                                                            }); 
+                                                                       
+                                                                   
+                                                            $('.updatePosp').modal('hide');
+                                                            $('#strong_lead').empty();
+                                                    },1000);
+                                                
+                                              }
+                                   
+                               }).fail(function(xhr, status, error) {
+                               console.log(error);
+                               });
+                          }else{
+                              alert("abc..");
+                          }
+            })
+
+         
+                
+                                    // Extend dataTables search
+                     
+               
+            
+              $('#submit').click(function(event){  event.preventDefault();
+                              $.fn.dataTable.ext.search.push(
+                        function( settings, data, dataIndex ) {
+                                    var min = $('#fromdate').val() * 1;
+                                    var max = $('#tromdate').val() * 1;
+                                    var age = parseFloat( data[1] ) || 0; // use data for the age column
+                            
+                                    if ( ( min == '' && max == '' ) ||
+                                        ( min == '' && age <= max ) ||
+                                        ( min <= age && '' == max ) ||
+                                        ( min <= age && age <= max ) )
+                                    {
+                                        return true;
+                                    }
+                                    return false;
+                                }
+                      );
+                     var table = $('#example').DataTable();
+                     table.draw();
+              });

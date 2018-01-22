@@ -10,7 +10,7 @@ html
     link(rel='stylesheet', href='/stylesheets/sidebar.css')
     script(type='text/javascript' src='/javascripts/jquery.min.js')
     script(type='text/javascript' src='/javascripts/bootstrap.min.js')
-   
+    link(type='text/css', rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
   body
     include dashboardlayout/header
     .wrapper
@@ -24,137 +24,7 @@ script(type='text/javascript' src='javascripts/jquery.validate.min.js')
 script(type='text/javascript' src='javascripts/bootstrap/jquery.dataTables.min.js')
 script(type='text/javascript' src='javascripts/bootstrap/dataTables.bootstrap.min.js')
 
-script.
-  function myFunction(x) {
-  x.classList.toggle("change");
-  }
-script.
-  $(document).ready(function(){
-  $(".search-btn").click(function(){
-  $(".search-dv").toggle("slow");
-  });
-  });
-script(type='text/javascript').
-  $(document).ready(function () {
-  $('#sidebarCollapse').on('click', function () {
-  $('#sidebar').toggleClass('active');
-  });
-  });
-script.
-  $(document).ready(function(){
-  $(".fltr-tog").click(function(){
-  $(".filter-bdy").toggle();
-  });
-  });
-script.
-  $(document).ready(function(){
-  $(".search-btn").click(function(){
-  $(".search-dv").toggle("slow");
-  });
-  });
 
-  
-  
-// Payment Link Start
-#paymentLink.modal.fade(role='dialog')
-  .modal-dialog
-    // Modal content
-    .modal-content
-      .modal-header
-        button.close(type='button', data-dismiss='modal') ×
-        h4.modal-title Payment Link
-      .modal-body
-        p
-          a(href='#') file:///D:/shekhar/RB/manish%20dixit/final/fba-list.html
-// Payment Link End
-// Password Start
-#showPassword.modal.fade(role='dialog')
-  .modal-dialog
-    // Modal content
-    .modal-content
-      .modal-header
-        button.close(type='button', data-dismiss='modal') ×
-        h4.modal-title Show Password
-      .modal-body
-        div
-          input.center-obj.padd-obj.text-center.font-sixteen(type='text', placeholder='######')
-        div
-          button.btn.btn-success.center-obj Show Password
-// Password End
-// FSM Details Start
-#fsmDetails.modal.fade(role='dialog')
-  .modal-dialog
-    // Modal content
-    .modal-content
-      .modal-header
-        button.close(type='button', data-dismiss='modal') ×
-        h4.modal-title FSM Details
-      .modal-body
-        p
-          a(href='#') file:///D:/shekhar/RB/manish%20dixit/final/fba-list.html
-// FSM Details End
-// Update POSP Start
-#updatePosp.modal.fade(role='dialog')
-  .modal-dialog
-    // Modal content
-    .modal-content
-      .modal-header
-        button.close(type='button', data-dismiss='modal') ×
-        h4.modal-title Update POSP
-      .modal-body
-        h3.center-obj
-          | POSP : 
-          input.padd-obj.text-center.font-sixteen(type='text')
-          button.btn.btn-success SAVE
-// Update POSP End
-// Partner Info Start
-#partnerInfo.modal.fade(role='dialog')
-  .modal-dialog
-    // Modal content
-    .modal-content
-      .modal-header
-        button.close(type='button', data-dismiss='modal') ×
-        h4.modal-title Partner Info
-      .modal-body
-        .table-responsive
-          table.table.table-bordered.table-striped
-            tr
-              td Partner ID
-              td Name
-              td Mobile No
-              td Email
-              td City
-              td Pincode
-            tr
-              td
-              td Pavamaana Softech
-              td 9845724268
-              td bgykumar@gmail.com
-              td Bangalore
-              td 560021
-// Partner Info End
-// Send SMS Start
-#sendSms.modal.fade(role='dialog')
-  .modal-dialog
-    // Modal content
-    .modal-content
-      .modal-header
-        button.close(type='button', data-dismiss='modal') ×
-        h4.modal-title Send SMS
-      .modal-body
-        table.table.table-striped
-          tr
-            td Mobile No:
-            td 9986955548
-          tr
-            td SMS:
-            td
-              textarea Type Msg...
-          tr
-            td
-            td
-              button.btn.btn-success Send
-// Send SMS End
 
 
 

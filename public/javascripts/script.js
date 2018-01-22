@@ -155,16 +155,39 @@ $(document).on('click',"input[type=button].cancelPop", function () {
     $(".delPop").popover('hide');
 });         
 
-
-$(document).ready(function() {
-    $('#datatable').DataTable();
-} );
-
-
  
-    $(document).ready(function() {
-    $('#datatable').DataTable( {
-        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
-    } );
-} );
+  function myFunction(x) {
+  x.classList.toggle("change");
+  }
  
+  $(document).ready(function(){
+  $(".search-btn").click(function(){
+  $(".search-dv").toggle("slow");
+  });
+  });
+ 
+  $(document).ready(function () {
+  $('#sidebarCollapse').on('click', function () {
+  $('#sidebar').toggleClass('active');
+  });
+  });
+ 
+  $(document).ready(function(){
+  $(".fltr-tog").click(function(){
+  $(".filter-bdy").toggle();
+  });
+  });
+ 
+  $(document).ready(function(){
+  $(".search-btn").click(function(){
+  $(".search-dv").toggle("slow");
+  });
+  });
+
+
+  function Numeric(event) {    // Numeric 
+      if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode != 8) {
+          event.keyCode = 0;
+          return false;
+      }
+    }

@@ -28,7 +28,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/login-authentication', function(req, res, next) {
   sess = req.session;
-  dbconnection.query("CALL usp_emp_login('"+ req.body.email + "','" + req.body.pwd + "')",function(err, rows){
+  dbconnection.query("CALL usp_update_emp_login('"+ req.body.email + "','" + req.body.pwd + "')",function(err, rows){
             if (err) throw err;
            var jsonData = JSON.stringify(rows[0]);
            var javascriptObject = JSON.parse(jsonData);
